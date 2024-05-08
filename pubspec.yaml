@@ -1,0 +1,45 @@
+name: cheon_an_bus
+description: "A new Cheon An Bus App project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  firebase_core: ^2.31.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+  fonts:
+    - family: Suite
+      fonts:
+        - asset: assets/fonts/SUITE-Light.ttf
+          weight: 300
+        - asset: assets/fonts/SUITE-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/SUITE-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/SUITE-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/SUITE-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/SUITE-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/SUITE-Heavy.ttf
+          weight: 900

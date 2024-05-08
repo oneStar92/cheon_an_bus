@@ -1,0 +1,95 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('app/key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def flutterCompileSdkVersion = localProperties.getProperty('flutter.flutterCompileSdkVersion')
+if (flutterCompileSdkVersion == null) {
+    flutterCompileSdkVersion = '34'
+}
+
+def flutterMinSdkVersion = localProperties.getProperty('flutter.flutterMinSdkVersion')
+if (flutterMinSdkVersion == null) {
+    flutterMinSdkVersion = '34'
+}
+
+def flutterTargetSdkVersion = localProperties.getProperty('flutter.flutterTargetSdkVersion')
+if (flutterTargetSdkVersion == null) {
+    flutterTargetSdkVersion = '34'
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0.0'
+}
+
+android {
+    namespace "com.cheonAnBus.onestar92.cheon_an_bus"
+    compileSdk flutterCompileSdkVersion.toInteger()
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.cheonAnBus.onestar92.cheon_an_bus"
+        minSdkVersion flutterMinSdkVersion.toInteger()
+        targetSdkVersion flutterTargetSdkVersion.toInteger()
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {}
