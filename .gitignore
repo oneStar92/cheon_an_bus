@@ -281,8 +281,8 @@ key.properties
 **/*.jks
 
 firebase.json
-lib/firebase_options.dart
 android/app/google-services.json
 ios/Runner/GoogleService-Info.plist
+lib/util/firebase_options.dart
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,androidstudio,xcode,flutter,dart
